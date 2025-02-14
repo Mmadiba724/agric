@@ -34,7 +34,7 @@ const Form = ({searchTerm, setSearchTerm, filteredProducts,handleSubmit, searchT
 					placeholder={'search here'}
 					className={'w-xl rounded-full p-2 border border-gray-200'} />
 
-				<button className={'border px-4 rounded-xl hover:cursor-pointer bg-green-50 border-green-300'} type="submit" >
+				<button className={`border px-4 rounded-xl hover:cursor-pointer text-black bg-green-50 border-green-300 `} type="submit" >
 					Submit
 				</button>
 
@@ -58,7 +58,7 @@ const Form = ({searchTerm, setSearchTerm, filteredProducts,handleSubmit, searchT
 						</ul>
 					)
 				) : (
-					<p>Start searching for products.</p>
+					<i>Searched products appear here</i>
 				)}
 			</div>
 
