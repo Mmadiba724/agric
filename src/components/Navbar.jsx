@@ -1,12 +1,12 @@
+import PropTypes from 'prop-types';
 import Logo from '../assets/logo-bg.png';
 import profilePic from '../assets/boy.png';
-import SearchIcon from '@mui/icons-material/Search';
 import ContrastIcon from '@mui/icons-material/Contrast';
 
 const Navbar = ({ toggleTheme }) => {
     return (
-        <div>
-            <div className="container flex justify-between ">
+        <div className={'w-full'}>
+            <div className="container flex justify-between lg:w-full ">
                 <div className="flex items-center text-xl text-green-800 ">
                     <img src={Logo} alt={'logo'} className={'w-15 rounded-full '} />
                     Agric
@@ -25,6 +25,10 @@ const Navbar = ({ toggleTheme }) => {
 
         </div>
     )
+};
+
+Navbar.propTypes = {
+    toggleTheme: PropTypes.func.isRequired,
 }
 
 export  default Navbar;

@@ -31,7 +31,6 @@ const Form = ({ searchTerm, setSearchTerm, handleSubmit }) => {
 Form.propTypes = {
     searchTerm: PropTypes.string.isRequired,
     setSearchTerm: PropTypes.func.isRequired,
-    filteredProducts: PropTypes.array.isRequired,
     handleSubmit: PropTypes.func.isRequired,
 };
 

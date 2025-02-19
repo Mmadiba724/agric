@@ -1,7 +1,25 @@
 import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
-const Results = ({filteredProducts,pagesVisited,itemsPerPage,changePage}) => {
+const Results = ({filteredProducts,pagesVisited,itemsPerPage,changePage,searchTerm}) => {
+
+    // if no products are found
+    
+
+if(filteredProducts.length === 0 && searchTerm === '') {
+        return (
+            <div className="flex justify-center w-full mt-5">
+                <h2 className="text-2xl black-red-500"><i>Begin Search</i></h2>
+            </div>
+        )
+}else if(filteredProducts.length === 0){
+        return (
+            <div className={'flex justify-center w-full mt-5'}>
+                <h2 className={'text-2xl black-red-500'}><i>No products found</i></h2>
+            </div>
+        )
+    }
+
 
 	const displayproducts = filteredProducts.slice(pagesVisited, pagesVisited + itemsPerPage).map((product) => {
         return (
@@ -16,24 +34,23 @@ const Results = ({filteredProducts,pagesVisited,itemsPerPage,changePage}) => {
     })
 
 	return (
-		<div className=" flex justify-center   ">
+		<div className=" flex flex-col items-center justify-center   ">
 			
-			<div className={'flex justify-center gap-3 p-3 md:w-3/4 sm:w-full lg:1/2 flex-wrap mt-5  '}>
-                        {displayproducts}
-                        <ReactPaginate 
-                            previousLabel={"Previous"}
-                            nextLabel={"Next"}
-                            pageCount={Math.ceil(filteredProducts.length / itemsPerPage)}
-                            onPageChange={changePage}
-                            renderOnZeroPageCount={null}
-                            containerClassName={"flex justify-center gap-5 mt-4 hover:cursor-pointer"}
-                            previousLinkClassName={"px-4 py-2 rounded border border-green-500 text-black"}
-                            nextLinkClassName={"px-4 py-2 rounded border border-green-500 text-black"}
-                            disabledClassName={"text-gray-300 "}
-                            activeClassName={"text-green-500 border-green-500 border px-2 rounded"}
-                        />
-                    </div>
-                        
+			<div className={'flex  justify-center gap-3 p-3 md:w-3/4 sm:w-full lg:1/2 flex-wrap mt-5  '}>
+                    {displayproducts}
+            </div>
+            <ReactPaginate 
+                previousLabel={"Previous"}
+                nextLabel={"Next"}
+                pageCount={Math.ceil(filteredProducts.length / itemsPerPage)}
+                onPageChange={changePage}
+                renderOnZeroPageCount={null}
+                containerClassName={"flex justify-center gap-5 mt-4 hover:cursor-pointer"}
+                previousLinkClassName={"px-4 py-2 rounded border border-green-500 text-black"}
+                nextLinkClassName={"px-4 py-2 rounded border border-green-500 text-black"}
+                disabledClassName={"text-gray-300 "}
+                activeClassName={"text-green-500 border-green-500 border px-2 rounded"}
+            />
 		</div>
 	);
 };
@@ -41,7 +58,8 @@ Results.propTypes = {
 	filteredProducts: PropTypes.array.isRequired,
 	pagesVisited: PropTypes.number.isRequired,
 	itemsPerPage: PropTypes.number.isRequired,
-	changePage: PropTypes.func.isRequired
+	changePage: PropTypes.func.isRequired,
+    searchTerm: PropTypes.string.isRequired,
 };
 
 
