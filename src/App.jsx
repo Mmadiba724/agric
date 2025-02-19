@@ -64,7 +64,7 @@ function App() {
             </header>
             <main className="md:w-full flex flex-col items-center justify-center  ">
                 <div className="flex flex-col items-center justify-between w-full">
-                    <h1 className="my-4 text-2xl">Search Your Products</h1>
+                    {/* <h1 className="my-4 text-2xl">Search Your Products</h1> */}
                     <Form
                         setSearchTerm={setSearchTerm}
                         searchTerm={searchTerm}
