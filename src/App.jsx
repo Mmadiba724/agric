@@ -70,6 +70,7 @@ function App() {
                         searchTerm={searchTerm}
                         handleSubmit={handleSubmit}
                         searchTriggered={searchTriggered}
+                        theme={theme}
                     />
 
                     <Results
@@ -78,6 +79,7 @@ function App() {
                         pagesVisited={pagesVisited}
                         changePage={changePage}
                         searchTerm={searchTerm}
+                        theme={theme}
                     />
                 </div>
             </main>

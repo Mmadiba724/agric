@@ -6,7 +6,7 @@ import ContrastIcon from '@mui/icons-material/Contrast';
 const Navbar = ({ toggleTheme }) => {
     return (
         <div className={'w-full'}>
-            <div className="container flex justify-between lg:w-full ">
+            <div className=" flex justify-between lg:w-full ">
                 <div className="flex items-center text-xl text-green-800 ">
                     <img src={Logo} alt={'logo'} className={'w-15 rounded-full '} />
                     Agric
