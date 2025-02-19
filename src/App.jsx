@@ -11,6 +11,16 @@ function App() {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([])
     const [searchTriggered, setSearchTriggered] = useState(false)
+    const [pageNumber, setPageNumber] = useState(0);
+
+    const itemsPerPage = 6;
+    const pagesVisited = pageNumber * itemsPerPage;
+
+    
+// function for changing the page used by react-paginate
+    const changePage = ({selected}) => {
+        setPageNumber(selected)
+    }
 
 
 
@@ -62,11 +72,14 @@ function App() {
                         searchTerm={searchTerm}
                         handleSubmit={handleSubmit}
                         searchTriggered={searchTriggered} />
-                    <Results
-                        searchTriggered={searchTriggered}
-                        filteredProducts={filteredProducts}
 
+                    <Results
+                        filteredProducts={filteredProducts}
+                        itemsPerPage={itemsPerPage}
+                        pagesVisited={pagesVisited}
+                        changePage={changePage}
                     />
+
                 </div>
 
 
