@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 import Navbar from "./components/Navbar.jsx";
 import Form from "./components/Form.jsx";
 import Footer from "./components/Footer.jsx";
+import Results from "./components/Results.jsx";
 
 function App() {
 
@@ -12,6 +13,8 @@ function App() {
     const [searchTriggered, setSearchTriggered] = useState(false)
 
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setSearchTriggered(true)
@@ -19,7 +22,7 @@ function App() {
 
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products')
+        fetch('https://api.escuelajs.co/api/v1/products')
             .then((res) => res.json())
             .then((data) => setProducts(data));
     },[]);
@@ -45,12 +48,13 @@ function App() {
 
     return (
 
-        <div className={`flex flex-col w-full h-full items-stretch justify-between px-4 ${ theme }`} >
+        <div className={`flex flex-col justify-between min-h-screen px-4 md:w-full md:overflow-x-hidden ${ theme }`} >
             <header className="">
                 <Navbar toggleTheme={toggleTheme} />
             </header>
-            <main className="h-120 flex items-start justify-center  ">
-                <div className="text-center">
+            <main className="md:w-full flex flex-col items-center justify-center  ">
+
+                <div className="flex flex-col items-center justify-between w-full">
                     <h1 className="my-4 text-2xl">Search Your Products</h1>
                     <Form
                         setSearchTerm={setSearchTerm}
@@ -58,10 +62,19 @@ function App() {
                         searchTerm={searchTerm}
                         handleSubmit={handleSubmit}
                         searchTriggered={searchTriggered} />
+                    <Results
+                        searchTriggered={searchTriggered}
+                        filteredProducts={filteredProducts}
+
+                    />
                 </div>
 
+
+                
+
             </main>
-            <footer className="">
+
+            <footer className="mt-5">
                 <Footer />
             </footer>
 
@@ -69,7 +82,7 @@ function App() {
         </div>
 
 
-  )
+    )
 }
 
 export default App
