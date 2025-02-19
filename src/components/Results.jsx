@@ -7,7 +7,7 @@ const Results = ({filteredProducts,pagesVisited,itemsPerPage,changePage}) => {
         return (
             <li key={product.id} className={'flex justify-between items-center md:w-64 md:items-center sm:w-full w-full px-3 rounded-xl border-0 shadow-2xl h-40 sm:h-48 sm:items-center sm:justify-between md:h-52 lg:h-60  bg-white hover:shadow-2xl hover:border-green-500 hover:border-2 hover:cursor-pointer'}>
 								<div className="text-left px-2 sm:w-1/4 md:w-full  ">
-									<h2 className={'text-md'}> {product.title} </h2>
+									<h2 className={'text-md text-black'}> {product.title} </h2>
 									<p className={'text-green-800'}>${product.price}</p>
 								</div>
 								<img src={product.images[0]} alt={product.title} className={'w-25 h-32 object-cover rounded '}  />
