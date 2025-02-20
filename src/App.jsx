@@ -48,6 +48,15 @@ function App() {
 
 
     useEffect(() => {
+        const currentHour = new Date().getHours()
+        if (currentHour >= 6 && currentHour < 18){
+            setTheme("light");
+        } else {
+            setTheme("dark");
+        }
+    }, []);
+
+    useEffect(() => {
         localStorage.setItem("theme", theme);
     }, [theme]);
 
