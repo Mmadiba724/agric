@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import {  Route, Routes, useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Form from "./components/Form.jsx";
 import Footer from "./components/Footer.jsx";
 import Results from "./components/Results.jsx";
+import Card from "./components/Card.jsx";
+import Carousel from "./components/Carousel.jsx";
 
 function App() {
     const [theme, setTheme] = useState("light");
@@ -11,9 +14,28 @@ function App() {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTriggered, setSearchTriggered] = useState(false);
     const [pageNumber, setPageNumber] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const nextImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }
+    const prevImage = () => {
+        setCurrentIndex((prevIndex) => (prevIndex - 1) % images.length);
+    }
+
+
+    const images = [
+
+        'https://picsum.photos/id/237/200/300',
+        'https://picsum.photos/id/238/200/300',
+        'https://picsum.photos/id/239/200/300',
+        'https://picsum.photos/id/240/200/300',
+    ]
 
     const itemsPerPage = 6;
     const pagesVisited = pageNumber * itemsPerPage;
+
+    const navigate = useNavigate();
 
     // function for changing the page used by react-paginate
     const changePage = ({ selected }) => {
@@ -37,6 +59,7 @@ function App() {
                         .includes(searchTerm.toLowerCase())
                 )
             );
+            navigate("/results");
         }
     };
 
@@ -46,17 +69,23 @@ function App() {
             .then((data) => setProducts(data));
     }, []);
 
-
     useEffect(() => {
-        const currentHour = new Date().getHours()
-        if (currentHour >= 6 && currentHour < 18){
-            setTheme("light");
+        const savedTheme = localStorage.getItem("theme");
+        if(savedTheme) {
+            setTheme(savedTheme);
         } else {
-            setTheme("dark");
+            const currentHour = new Date().getHours()
+            if (currentHour >= 6 && currentHour < 18){
+                setTheme("light");
+            } else {
+                setTheme("dark");
+            }
         }
     }, []);
 
     useEffect(() => {
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(theme);
         localStorage.setItem("theme", theme);
     }, [theme]);
 
@@ -65,38 +94,58 @@ function App() {
     };
 
     return (
-        <div
-            className={`flex flex-col justify-between min-h-screen px-4 lg:w-full md:w-full md:overflow-x-hidden ${theme}`}
-        >
-            <header className="w-full flex justify-center">
-                <Navbar toggleTheme={toggleTheme} />
-            </header>
-            <main className="md:w-full flex flex-col items-center justify-center  ">
-                <div className="flex flex-col items-center justify-between w-full">
-                    {/* <h1 className="my-4 text-2xl">Search Your Products</h1> */}
-                    <Form
-                        setSearchTerm={setSearchTerm}
-                        searchTerm={searchTerm}
-                        handleSubmit={handleSubmit}
-                        searchTriggered={searchTriggered}
-                        theme={theme}
+            <div className={`flex flex-col min-h-screen px-4 lg:w-full md:w-full md:overflow-x-hidden   ${theme}`}>
+
+                <header className="w-full flex justify-center">
+                    <Navbar toggleTheme={toggleTheme} />
+                </header>
+
+                <main className="  my-5 flex-grow md:w-full h-auto flex flex-col items-center p-5">
+                    <div className="flex flex-col items-center justify-between w-full">
+                        {/* <h1 className="my-4 text-2xl">Search Your Products</h1> */}
+                        <Form
+                            setSearchTerm={setSearchTerm}
+                            searchTerm={searchTerm}
+                            handleSubmit={handleSubmit}
+                            searchTriggered={searchTriggered}
+                            theme={theme}
+                        />
+                    </div>
+
+                    <Card />
+                    <Carousel
+                        currentIndex={currentIndex}
+                        setCurrentIndex={setCurrentIndex}
+                        images={images}
+                        nextImage={nextImage}
+                        prevImage={prevImage}
                     />
 
-                    <Results
-                        filteredProducts={filteredProducts}
-                        itemsPerPage={itemsPerPage}
-                        pagesVisited={pagesVisited}
-                        changePage={changePage}
-                        searchTerm={searchTerm}
-                        theme={theme}
-                    />
-                </div>
-            </main>
 
-            <footer className="mt-5">
-                <Footer />
-            </footer>
-        </div>
+
+                    <Routes>
+                    <Route
+                        path="/results"
+                        element={
+                            <Results
+                                filteredProducts={filteredProducts}
+                                itemsPerPage={itemsPerPage}
+                                pagesVisited={pagesVisited}
+                                changePage={changePage}
+                                searchTerm={searchTerm}
+                                theme={theme}
+                            />
+                        }
+                    />
+                </Routes>
+                </main>
+
+                <footer className="mt-auto">
+                    <Footer />
+                </footer>
+
+            </div>
+
     );
 }
 
