@@ -112,14 +112,30 @@ function App() {
                         />
                     </div>
 
-                    <Card />
-                    <Carousel
-                        currentIndex={currentIndex}
-                        setCurrentIndex={setCurrentIndex}
-                        images={images}
-                        nextImage={nextImage}
-                        prevImage={prevImage}
-                    />
+                    <div className={`flex flex-col items-center justify-between w-full`}>
+                        {/*Cards Trending*/}
+                        <div className={``}>
+                            <h2 className={`text-3xl font-bold m-2`} >Trending</h2>
+                            <div className={`flex gap-3`}>
+                                <Card />
+                                <Card />
+                                <Card />
+                            </div>
+                        </div>
+
+                        {/*Carousel*/}
+                        <div className={``}>
+                            <Carousel
+                                currentIndex={currentIndex}
+                                setCurrentIndex={setCurrentIndex}
+                                images={images}
+                                nextImage={nextImage}
+                                prevImage={prevImage}
+                            />
+                        </div>
+                    </div>
+
+
 
                     <Routes>
                     <Route

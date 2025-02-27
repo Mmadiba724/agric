@@ -12,7 +12,14 @@ const Navbar = ({ toggleTheme }) => {
                     Agric
                 </div>
 
-                <div className="flex items-center gap-6     ">
+                <div className="flex items-center gap-6 ">
+
+                    <div className={'flex items-center gap-4'} >
+                        <a href={''} >Home</a>
+                        <div className={''}>
+                            Directory
+                        </div>
+                    </div>
 
                     <img src={profilePic} alt={'profilePic'} className={'w-10 rounded-full '} />
                     {/*<SearchIcon />*/}
