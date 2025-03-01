@@ -152,17 +152,23 @@ function App() {
 
                     <div className={` flex flex-col items-center justify-between h-[50%] `}>
                         {/*Cards Trending*/}
-                        <div className={``}>
-                            <h2 className={`text-3xl font-bold m-2`} >Trending</h2>
-                            <div className={`flex gap-3 `}>
-                                <Card />
+                        <div className={`flex flex-col items-center `}>
+                            <div className=" w-full" style={{textAlign:'left'}}>
+                                <h2 className={`text-3xl font-bold mt-4 mb-0 ml-5 `} >Trending</h2>
+                            </div>
+
+                            <div className={` md:w-[90%]  `}>
+                                <Card
+                                    theme={theme}
+                                />
                             </div>
                         </div>
 
                         {/*Carousel*/}
-                        <div className={`rounded-xl w-[70%] flex justify-center mt-4 p-3`}>
+                        <div className={`rounded-xl sm:w-[90%] w-[70%] flex justify-center mt-4 p-3`}>
                             <Carousel
                                 data={data}
+                                theme={theme}
                             />
                         </div>
                     </div>
@@ -192,7 +198,7 @@ function App() {
 
             </div>
 
-    );
+    )
 }
 
 export default App;

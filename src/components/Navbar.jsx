@@ -19,7 +19,7 @@ const Navbar = ({ toggleTheme }) => {
                             <li>
                                 <details>
                                     <summary>Directory</summary>
-                                    <ul className="bg-primary-content rounded-t-none p-0 m-0" style={{marginTop: 1}}>
+                                    <ul className="bg-primary-content rounded-t-none p-0 m-0" style={{marginTop: 1, backgroundColor: 'transparent'}}>
                                         <li><a>Products</a></li>
                                         <li><a>Business</a></li>
                                     </ul>
