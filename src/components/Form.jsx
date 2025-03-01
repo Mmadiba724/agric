@@ -1,10 +1,11 @@
 import PropTypes from "prop-types";
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 
 const Form = ({ searchTerm, setSearchTerm, handleSubmit,theme }) => {
     return (
         <div className={"  w-full "}>
             <form
-                className={"flex justify-center mb-3 gap-3 w-full "}
+                className={"flex justify-center mb-3 gap-4 w-full "}
                 onSubmit={handleSubmit}
             >
                 <input
@@ -21,13 +22,13 @@ const Form = ({ searchTerm, setSearchTerm, handleSubmit,theme }) => {
                 />
 
                 <button
-                    className={`border px-4 rounded-xl hover:cursor-pointer hover:border-green-500 hover:shadow-2xl hover:border-2 ${theme === 'dark'
-                        ? 'bg-green-100 text-black  '
-                        : 'text-black bg-green-50 border-green-300 '
+                    className={` px-4 text-xl rounded-xl hover:cursor-pointer hover:border-green-500 hover:shadow-2xl hover:border-1 ${theme === 'dark'
+                        ? 'text-white  '
+                        : 'text-black bg-green-50  '
                     } `}
                     type="submit"
                 >
-                    Submit
+                    <SearchOutlinedIcon/>
                 </button>
             </form>
         </div>
