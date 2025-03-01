@@ -27,7 +27,7 @@ const Carousel = ({ data, theme }) => {
 
 	return (
 		<div className={`w-full flex justify-center `}>
-			<div className="border carousel carousel-center  rounded-box flex items-center
+			<div className=" carousel carousel-center  rounded-box flex items-center
 				h-[300px]  p-2 sm:max-w-[90%] md:max-w-[70%] lg:max-w-[60%] overflow-hidden ">
 
 				<div ref={carouselRef} className={`flex gap-4 overflow-x-scroll scroll-smooth 
