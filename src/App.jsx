@@ -132,7 +132,7 @@ function App() {
     };
 
     return (
-            <div className={`flex flex-col min-h-screen px-4 lg:w-full md:w-full md:overflow-x-hidden   ${theme}`}>
+            <div className={`flex flex-col min-h-screen px-4 overflow-x-hidden  ${theme}`}>
 
                 <header className="w-full flex justify-center">
                     <Navbar toggleTheme={toggleTheme} />
