@@ -23,6 +23,44 @@ function App() {
         setCurrentIndex((prevIndex) => (prevIndex - 1) % images.length);
     }
 
+    const data = [
+        {
+            id: 1,
+            title: "Serene Lake View",
+            img: "https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp",
+            description: "A peaceful lake reflecting the warm hues of sunset."
+        },
+        {
+            id: 2,
+            title: "Mountain Adventure",
+            img: "https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.webp",
+            description: "Snow-capped mountains calling for an adventurous climb."
+        },
+        {
+            id: 3,
+            title: "Urban Lifestyle",
+            img: "https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.webp",
+            description: "A glimpse into the fast-paced life of a bustling city."
+        },
+        {
+            id: 4,
+            title: "Tropical Paradise",
+            img: "https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.webp",
+            description: "Golden sands and crystal-clear waters await your arrival."
+        },
+        {
+            id: 5,
+            title: "Misty Forest",
+            img: "https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.webp",
+            description: "A foggy forest path that feels straight out of a fairytale."
+        },
+        {
+            id: 6,
+            title: "Autumn Road",
+            img: "https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp",
+            description: "A scenic drive through golden autumn leaves."
+        }
+    ];
 
     const images = [
 
@@ -100,8 +138,8 @@ function App() {
                     <Navbar toggleTheme={toggleTheme} />
                 </header>
 
-                <main className="  my-5 flex-grow md:w-full h-auto flex flex-col items-center p-5">
-                    <div className="flex flex-col items-center justify-between w-full">
+                <main className="   my-5 flex-grow md:w-full h-full flex flex-col items-center p-5">
+                    <div className=" flex flex-col items-center justify-end h-[200px] w-full">
                         {/* <h1 className="my-4 text-2xl">Search Your Products</h1> */}
                         <Form
                             setSearchTerm={setSearchTerm}
@@ -112,25 +150,19 @@ function App() {
                         />
                     </div>
 
-                    <div className={`flex flex-col items-center justify-between w-full`}>
+                    <div className={` flex flex-col items-center justify-between h-[50%] `}>
                         {/*Cards Trending*/}
                         <div className={``}>
                             <h2 className={`text-3xl font-bold m-2`} >Trending</h2>
-                            <div className={`flex gap-3`}>
-                                <Card />
-                                <Card />
+                            <div className={`flex gap-3 `}>
                                 <Card />
                             </div>
                         </div>
 
                         {/*Carousel*/}
-                        <div className={``}>
+                        <div className={`rounded-xl w-[70%] flex justify-center mt-4 p-3`}>
                             <Carousel
-                                currentIndex={currentIndex}
-                                setCurrentIndex={setCurrentIndex}
-                                images={images}
-                                nextImage={nextImage}
-                                prevImage={prevImage}
+                                data={data}
                             />
                         </div>
                     </div>

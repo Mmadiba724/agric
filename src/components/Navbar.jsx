@@ -13,12 +13,19 @@ const Navbar = ({ toggleTheme }) => {
                 </div>
 
                 <div className="flex items-center gap-6 ">
-
-                    <div className={'flex items-center gap-4'} >
-                        <a href={''} >Home</a>
-                        <div className={''}>
-                            Directory
-                        </div>
+                    <div className="flex-none">
+                        <ul className="menu menu-horizontal px-1">
+                            <li><a>Home</a></li>
+                            <li>
+                                <details>
+                                    <summary>Directory</summary>
+                                    <ul className="bg-primary-content rounded-t-none p-0 m-0" style={{marginTop: 1}}>
+                                        <li><a>Products</a></li>
+                                        <li><a>Business</a></li>
+                                    </ul>
+                                </details>
+                            </li>
+                        </ul>
                     </div>
 
                     <img src={profilePic} alt={'profilePic'} className={'w-10 rounded-full '} />
